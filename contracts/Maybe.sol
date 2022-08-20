@@ -12,7 +12,7 @@ import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
 import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
- * @notice Maybe - American style covered calls & puts for ERC20 | ERC721 | ERC1155 tokens as NFTs
+ * @notice Maybe - ERC721 American style covered calls & puts for ERC20 | ERC721 | ERC1155 tokens
  */
 contract Maybe is ERC721Enumerable, ERC721Royalty {
     using Counters for Counters.Counter;
@@ -44,9 +44,9 @@ contract Maybe is ERC721Enumerable, ERC721Royalty {
     constructor(
         string memory name_,
         string memory symbol_,
-        address royaltyInfoRecipient_
+        address royaltyRecipient_
     ) ERC721(name_, symbol_) {
-        _setDefaultRoyalty(royaltyInfoRecipient_, 100);
+        _setDefaultRoyalty(royaltyRecipient_, 100); // 1%
     }
 
     function mint(Option memory option) external returns (uint256) {
